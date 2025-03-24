@@ -7,7 +7,7 @@ import { MdDelete } from "react-icons/md";
 import Pagination from '@mui/material/Pagination';
 import { MyContext } from "../../App";
 import { fatchDataFromApi } from '../utils/api';
-import { data } from 'react-router-dom';
+import { data, Link } from 'react-router-dom';
 
 
 
@@ -39,7 +39,12 @@ const Category = () => {
       })
     },[]);
     
-
+    const handleChange = (event, value) =>{
+      fatchDataFromApi(`/api/category?page=${value}`).then((res) =>{
+        setCatData(res);
+      
+      })
+    };
 
    
 
@@ -47,6 +52,10 @@ const Category = () => {
     <>
       <div className="right-content w-100 mt-1">
         <h4 className="tpheaderdashboard">Category List</h4>
+        <Link to="/category/add">
+          <Button className='btn-blue'>Add Category</Button>
+          </Link>
+       
         <div className="row dashboardboxwrapperrow">
          
         </div>
