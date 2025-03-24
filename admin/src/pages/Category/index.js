@@ -69,7 +69,7 @@ const Category = () => {
               <tbody>
               
             {
-              catData.length!==0 && catData?.map((item,index)=>{
+              catData?.categoryList?.length!==0 && catData?.categoryList?.map((item,index)=>{
                   return(
                     <tr>
                     <td>#{index+1}</td>
@@ -123,8 +123,10 @@ const Category = () => {
             </table>
             <div className='d-flex tablefooter'>
             
-      <p>showing <b>12</b> of <b>60</b> results</p>
-      <Pagination count={15} variant="outlined" shape="rounded" className="pagination" showFirstButton showLastButton />
+      
+      <Pagination count={catData?.totalPages} variant="outlined" shape="rounded" className="pagination" showFirstButton showLastButton
+      onChange={handleChange}
+      />
     
             
             </div>
