@@ -1,0 +1,1073 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Varela&display=swap');
+
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+::-webkit-scrollbar {
+  width: 5px !important;
+  height: 5px !important;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6c6b6b;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body {
+  font-family: "Lato", serif;
+  color: #000000;
+  background: #e8e7e7;
+  overflow-x: hidden;
+}
+.btn-big{ padding: 10px 25px !important; font-size: 16px !important;}
+
+header {
+  width: 100%;
+  height: 80px;
+  background: #fff;
+  box-shadow: 0px 0px 10px 12px rgba(0, 0, 0, 0.1);
+  transform: scale(1);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 1000;
+}
+
+body.dark header{ background: #333787 !important;}
+body.dark button.rounded-circle{ background: rgba(255,255,255, 0.5);}
+body.dark button.rounded-circle:hover svg {
+  color: #000;
+}
+body.dark .sgnbtn{background-image: linear-gradient(179deg, #9b9797, #ebe8e8ed) !important;
+color:#000 !important;
+}
+body.dark .searchBox{ background-color: rgba(255,255,255, 0.5) !important;}
+body.dark .count{ background: #e7e0e0; color: #333;}
+body.dark .main .sidewrapper .sidebar{background: #333787;}
+body.dark .right-content{ background: #333787;}
+
+body.dark .right-content .tpheaderdashboard{background: #3136a7;}
+body.dark .card{ background: #3136a7;}
+body.dark .table tbody tr:nth-of-type(even){ background: #5157e3;}
+body.dark .table tbody td{ color: #ffffff;}
+
+header .logo {
+  text-decoration: none !important;
+}
+
+header .logo a {
+  text-decoration: none;
+}
+
+header .logo span {
+  text-decoration: none;
+  font-size: 22px;
+  font-weight: 600;
+  color: #000 !important;
+}
+
+header button.rounded-circle {
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+header button.rounded-circle:hover svg {
+  color: #a50034;
+}
+
+header button svg {
+  color: #000000;
+  font-size: 30px;
+  font-weight: 600;
+  transition: all 0.2s ease-in-out;
+}
+
+.searchBox {
+  background: rgba(0, 0, 0, 0.1) !important;
+  width: auto;
+  height: 40px;
+  border-radius: 6px;
+  padding: 0px 15px;
+}
+
+.searchBox input {
+  background: transparent;
+  border: 0;
+  outline: none;
+  padding-left: 0px;
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.searchBox input::-webkit-input-placeholder {
+  color: rgba(0, 0, 0, 0.3);
+}
+
+.userImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid #605e5e;
+  box-shadow: 1px 3px 9px rgba(0, 0, 0, 0.4);
+}
+
+.userImg img {
+  object-fit: contain;
+  width: 100%;
+  height: 100%;
+}
+
+.myAcc .userInfo {
+  padding-left: 15px;
+  cursor: pointer;
+}
+
+.myAcc .userInfo h4 {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 0px;
+  color: #000;
+  opacity: 0.8;
+}
+
+.myAcc .userInfo p {
+  margin-bottom: 0px;
+  font-size: 12px;
+  color: #000;
+  opacity: 0.5;
+  font-weight: 600;
+}
+
+#account-menu,
+#cartsDrop>li {
+  font-size: 15px !important;
+  padding: 12px 15px;
+}
+
+#account-menu,
+#cartsDrop>svg {
+  font-size: 40px !important;
+}
+
+#notifications .MuiPaper-elevation {
+  right: 15% !important;
+  top: 80px !important;
+  width: 350px;
+  left: auto !important;
+}
+
+#emails .MuiPaper-elevation {
+  right: 18% !important;
+  top: 80px !important;
+  width: 350px;
+  left: auto !important;
+}
+
+#cartsDrop .MuiPaper-elevation {
+  right: 23% !important;
+  top: 80px !important;
+  width: 350px;
+  left: auto !important;
+}
+
+h4 {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  font-weight: 600;
+}
+
+.dropdownInfo {
+  padding-left: 15px;
+}
+
+.dropdownInfo h4 {
+  font-size: 14px;
+  font-weight: 500;
+  white-space: break-spaces;
+  line-height: 21px;
+  margin-bottom: 0;
+}
+
+.dropdownInfo h4 b {
+  font-weight: 600;
+}
+
+.dropdownInfo p {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 0px !important;
+}
+
+.text-red {
+  color: #a50034 !important;
+}
+
+.dropdown_list li {
+  background: #e4e2e2 !important;
+  margin: 0px 2px;
+  /* transition: all 0.2s ease-in-out;*/
+  margin: 2px 5px;
+  border-radius: 8px;
+}
+
+.dropdown_list li:hover {
+  background: #ecdcdc !important;
+}
+
+.dropdown_list .scroll {
+  max-height: 300px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.dropdown_list .viewallbtn {
+  position: fixed;
+  bottom: 3%;
+}
+
+.btn-blue {
+  background: #514d4e !important;
+  color: #ffffff !important;
+  text-transform: capitalize !important;
+  font-weight: 600 !important;
+  font-size: 15px !important;
+  width: 96%;
+  margin: -1% 2% !important;
+}
+
+.count {
+  position: absolute;
+  top: -13px;
+  right: -18%;
+  border-radius: 50%;
+  background: #5a5757;
+  width: 24px;
+  height: 24px;
+  color: #c1c8c1;
+  font-size: 0.7em;
+  font-weight: 700;
+}
+
+.count span {
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.main .sidewrapper {
+  width: 20%;
+  flex: 0 0 20%;
+  transition: all 0.3s ease-in-out;
+}
+.main .sidewrapper.toggle{ width: 0%;
+  flex: 0 0 0%;}
+.main .sidewrapper.toggle .sidebar{left:-100%}
+
+.main .sidewrapper .sidebar {
+  width: 20%;
+  height: 100vh;
+  max-height: calc(100% - 80px) !important;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: fixed;
+  top: 80px;
+  left: 0px;
+  background: #656262;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  font-weight: 600; transition: all 0.3s ease-in-out;
+}
+
+.main .sidewrapper .sidebar ul {
+  margin-bottom: 0;
+}
+
+.main .sidewrapper .sidebar ul li {
+  list-style: none;
+  padding: 3px 15px;
+}
+
+.main .sidewrapper .sidebar button {
+  text-align: left;
+  justify-content: left;
+  color: #000000;
+  padding: 12px 15px;
+  align-items: center;
+  font-size: 15px;
+  text-transform: capitalize;
+  /* background: #3d3c3c; */
+  color: #e5e2e2;
+  box-shadow: 1px 6px 10px #7b7878;
+  border-bottom: 1px solid #a3a1a1;
+}
+
+.main .sidewrapper .sidebar button:hover {
+  background: #3d3c3c;
+  opacity: 0.7;
+}
+
+.main .sidewrapper .sidebar button.active {
+  background: rgb(60 58 58 / 50%) !important;
+}
+
+.main .sidewrapper .sidebar button .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  margin-right: 10px;
+}
+
+.main .sidewrapper .sidebar button.active .icon svg {
+  color: #e7abbe;
+}
+
+.sidebar button.active .arrow {
+  transform: rotate(90deg) !important;
+}
+
+.main .sidewrapper .sidebar button svg {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.main .sidewrapper .sidebar button .arrow {
+  margin-left: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  transition: all 0.3s ease-in-out;
+}
+
+.main .sidewrapper .sidebar button .arrow svg {
+  font-size: 12px !important;
+}
+
+.sidebar h5 {
+  color: #000000;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 700;
+  opacity: 0.7;
+  margin: 4% 0%;
+}
+
+.main .sidewrapper .sidebar::-webkit-scrollbar-thumb {
+  background: transparent !important;
+  width: 2px;
+}
+
+.main .sidewrapper .sidebar::-webkit-scrollbar {
+  background: #484747 !important;
+}
+
+.main .sidewrapper .sidebar ul .submenu {
+  padding: 10px 45px;
+  position: relative;
+  background: rgb(114 109 109);
+  transition: all 0.3s;
+  height: auto;
+  overflow: hidden;
+}
+
+.main .sidewrapper .sidebar ul .submenu:before {
+  content: '';
+  width: 3px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 25px;
+  background: rgb(241 201 201 / 20%);
+}
+
+.main .sidewrapper .sidebar ul .submenu li {
+  width: 100%;
+  list-style: none;
+}
+
+.main .sidewrapper .sidebar ul .submenu li a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 5px 0px;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.main .sidewrapper .sidebar ul .submenu li a:hover {
+  color: #bab4b6;
+  text-decoration: none !important;
+}
+
+.main .sidewrapper .sidebar ul .submenuwrapper {
+  transition: all 0.4s;
+  height: 0px;
+  overflow: hidden;
+}
+
+.main .sidewrapper .sidebar ul .submenuwrapper.colapsed {
+  height: 0px;
+}
+
+.main .sidewrapper .sidebar ul .submenuwrapper.colapsed .submenu {
+  opacity: 0;
+}
+
+.main .sidewrapper .sidebar ul .submenuwrapper.colapse {
+  height: auto;
+  overflow: inherit;
+  padding: 10px 0px;
+}
+
+.main .sidewrapper .sidebar ul .submenuwrapper.colapse .submenu {
+  opacity: 1;
+}
+
+.logoutwrapper {
+  padding: 0px 25px;
+}
+
+.logoutwrapper .logoutbox {
+  width: 100%;
+  height: 100px;
+  padding: 25px;
+  background: transparent;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  box-shadow: 1px 6px 10px #7b7878;
+}
+
+.logoutwrapper .logoutbox::before {
+  content: '';
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  position: absolute;
+  top: -30px;
+  right: -23px;
+}
+
+.logoutwrapper .logoutbox button {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+}
+
+.logoutwrapper .logoutbox button svg {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+.btnlogout {
+  background: #e791ac !important;
+}
+
+.main .content {
+  width: 80%;
+  flex: 0 0 80%; transition: all 0.3s ease-in-out;
+}
+.main .content.toggle{width: 100%;
+  flex: 0 0 100%;}
+
+.right-content {
+  padding: 90px 25px;
+}
+
+
+.right-content .tpheaderdashboard {
+  background: #fbf8f8;
+  padding: 20px;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.right-content h4 {
+  font-size: 20px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+
+.dashboardboxwrapper {
+  gap: 20px;
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.dashboardboxwrapper .dashboardbox {
+  width: 48%;
+  height: 170px;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  position: relative;
+  box-shadow: 1px 3px 3px rgba(0,0,0, 0.7);
+}
+
+.box {
+  width: 100%;
+  height: 100%;
+  background: #cccccc;
+}
+
+.dashboardbox .col1 {
+  color: #ffffff;
+}
+
+.dashboardbox .col1 span {
+  font-size: 30px !important;
+  font-weight: bold;
+  line-height: 45px;
+}
+
+.dashboardbox .col1 h4 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.dashboardbox .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px !important;
+  height: 50px;
+  border-radius: 10px;
+  background-image: linear-gradient(to bottom right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.2));
+  color: #ffffff;
+}
+
+.dashboardbox .icon svg {
+  font-size: 30px !important;
+  opacity: 0.3;
+  color: #ffffff;
+}
+
+.dashboardbox .toogleicon {
+  font-size: 22px;
+  color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  min-width: 40px !important;
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.dashboardbox .chart {
+  opacity: 0.1;
+  position: absolute;
+  bottom: 20px;
+  left: -17px;
+}
+
+.dashboardbox .chart svg {
+  font-size: 110px;
+  color: #000;
+}
+
+.toogleicon span:before {
+  margin-left: 10px;
+}
+
+.navigation {
+  width: 100%;
+  float: left;
+  margin-left: 20px;
+}
+
+.navigation ul {
+  margin: 0px;
+  padding: 0px;
+  list-style-type: none;
+}
+
+.navigation ul li {
+  list-style-type: none;
+}
+
+.navigation ul li a {
+  display: inline-block;
+  font-size: 17px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 20px;
+}
+
+#long-menu .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  background: rgba(0, 0, 0, 0.6) !important;
+  min-width: 170px !important;
+  width: 170px !important;
+  transition: all 0.5s ease-in-out;
+}
+
+#long-menu span {
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+#long-menu svg {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 28px;
+}
+
+.graphbox {
+  background-image: linear-gradient(rgb(61 63 62), rgb(199 201 200));
+  padding: 25px;
+  border-radius: 10px; box-shadow: 1px 3px 3px rgba(0,0,0, 0.7);
+}
+.graphbox button{    background: rgba(0, 0, 0, 0.1);
+  border-radius: 100%;
+  width: 24px;
+  min-width: 40px;
+  height: 40px; color: #000000;}
+
+.graphbox svg {
+  color: #000000 ;
+}
+
+#graphdropdown .css-1tktgsa-MuiPaper-root-MuiPopover-paper-MuiMenu-paper {
+  background: rgba(255, 255, 255, 0.8) !important;
+  max-width: 150px !important;
+  width: 150px !important;
+  transition: all 0.5s ease-in-out;
+  overflow: hidden;
+}
+
+.graphbox .toogleicon svg {
+  color: #000000;
+  font-size: 20px !important;
+  opacity: 0.6;
+}
+
+.graphbox h4 {
+  font-size: 26px;
+  margin-bottom: 0px;
+  font-weight: 600;
+}
+
+.graphbox p {
+  font-size: 13px;
+  color: #ffffff;
+  opacity: 0.7;
+  margin-top: 10px;
+}
+
+.card {
+  margin: 15px 0px;
+}
+
+.card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: rgba(0, 0, 0, 0.8);
+  margin-bottom: 22px;
+}
+
+.label h4 {
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  color: rgba(0, 0, 0, 0.7);
+  text-transform: capitalize;
+}
+
+.label .css-xn6ruc>:not(style) {
+  margin: 0px !important;
+}
+
+.outlined-basic .custom-width {
+  width: 90% !important;
+  min-width: 90%;
+  flex: 0 0 0 90%;
+}
+
+.custwidth {
+  width: 100% !important;
+  min-width: 100% !important;
+}
+
+.card .css-si86to-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  font-size: 13px;
+}
+
+
+
+
+.table thead {
+  background-image: linear-gradient(360deg, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.5));
+  text-align: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  box-shadow: 7px 5px 6px rgba(0, 0, 0, 0.7);
+  text-transform: capitalize;
+}
+
+.table tbody td {
+  font-size: 14px !important;
+  color: #403e57;
+  font-weight: 600;
+}
+
+.table tbody .actions {
+  gap: 5px;
+  justify-content: center;
+}
+
+.table tbody .actions button {
+  min-width: 33px !important;
+  width: 33px !important;
+  height: 30px !important;
+}
+
+.table tbody .actions button svg {
+  font-size: 33px !important;
+}
+
+.table tbody .actions button.secondary {
+  background: rgba(203, 60, 231, 0.1) !important;
+}
+
+.table tbody .actions button.success {
+  background: #23964f1a !important;
+}
+
+.table tbody .actions button.error {
+  background: rgba(120, 11, 11, 0.1) !important;
+}
+
+/* Zebra striping */
+.table tbody tr:nth-of-type(even) {
+  background: #e6e9e9;
+}
+
+.table tbody th {
+  background: #2c3e50;
+  font-weight: bold;
+}
+
+.table td {
+  vertical-align: middle !important;
+  text-align: center;
+}
+
+table td .info {
+  width: 70%;
+  text-align: left;
+}
+
+table td .imgwrapper {
+  width: 30%;
+  flex: 0 0 30%;
+}
+
+table td .info h6 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-bottom: 0px;
+  font-size: 14px;
+}
+
+table td .info p {
+  font-size: 13px;
+  list-style: none;
+  line-height: 18px;
+  overflow: hidden;
+  margin-bottom: 0px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.7;
+}
+
+table td .productbox {
+  width: 120px;
+}
+
+table td .productbox .info {
+  width: 100%;
+}
+
+table td .imgwrapper {
+  width: 50px;
+}
+
+table td .old,
+table td .new {
+  display: block;
+  width: 100%;
+}
+
+table td .old,
+table td .new del {
+  opacity: 0.6;
+  font-weight: 600;
+}
+
+table .rtng {
+  vertical-align: text-bottom !important;
+  padding-right: 6px !important;
+}
+
+table td .navigation {
+  width: 200px;
+  margin-left: 20px;
+}
+
+table td .navigation ul {
+  margin: 0px;
+  padding: 0px;
+}
+
+.MuiPagination-ul li button{ background: #717070; color: #ffffff; font-size: 10px;}
+.css-ptck8z-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected{ color: #333333; font-weight: 600;}
+.css-ptck8z-MuiButtonBase-root-MuiPaginationItem-root:hover{ color: #333333; font-weight: 600;}
+.css-ptck8z-MuiButtonBase-root-MuiPaginationItem-root{ min-width: 26px !important; height: 26px !important;}
+.tablefooter{ padding-bottom: 20px;}
+.tablefooter p{ font-size: 14px; font-weight: 600; color:rgba(0,0,0, 0.6);}
+.tablefooter .pagination{margin-left: auto;}
+
+.table td .menuarea{ width: 100%; flex: 0 0 0 100%;}
+.table td .menuarea ul{ margin: 0px; padding: 0px; list-style-type:none;}
+.table td .menuarea ul li{ display: inline-block; margin: 0p 20px;}
+.table td .menuarea ul li a{ display: block; text-decoration:none; font-size: 14px; text-decoration: none;}
+.sgnbtn{    width: 30px;
+  font-size: 12px !important;
+  color: #ffffff !important;
+  font-weight: 500 !important;
+  background-image: linear-gradient(179deg, #9b9797, #060606ed) !important;
+  box-shadow: 2px 5px 9px Rgba(0,0,0, 0.5); border-radius: 30px !important;
+}
+  .part2{ padding-left: 60px !important;}
+  .padd{ margin-top:50% !important; color: #000000 !important;}
+
+  .loginsection{ background: rgba(255,255,255, 0.6); width: 100% !important; height: 100vh; padding:45px 25px; position: fixed;    
+  }
+  .loginpattern{ width: 100%; height: 100%; opacity: 0.08; position: fixed; top: 0px; left: 0px; z-index: 99; pointer-events: none;}
+  .loginsection .loginbox{ width: 400px; height: auto; margin: auto;}
+  .loginsection .loginbox .wrapper{ width: 100%; height: auto; background: #cccccc; position: relative; z-index: 10;}
+  .loginsection .loginbox .wrapper .form-group{ margin-top: 20px;}
+  .loginsection .loginbox .wrapper .form-control{ background: #ffffff !important; box-shadow: none !important; outline: none !important;
+  border-radius: 5px !important; text-transform: capitalize; font-size: 14px; height: 45px; font-weight: 600; padding-left: 40px;
+  }
+  .loginsection .loginbox .wrapper .form-group.focus .icon svg{ color: #000000 !important;}
+  .loginsection .loginbox .wrapper .form-control:focus{border: 1px solid #6e6e6e !important;}
+  .loginsection .loginbox .wrapper .form-control:focus .icon svg{color:#333333 !important;}
+  .loginsection .loginbox .wrapper .form-group .icon{ position: absolute; top:3px; left: 10px;
+  z-index: 100; font-size: 23px; color: rgba(0,0,0, 0.5);
+  
+  }
+
+  ::-webkit-input-placeholder { font-size: 13px; font-weight: 600; color: rgba(0,0,0, 0.5); }
+:-moz-placeholder {font-size: 13px; font-weight: 600; color: rgba(0,0,0, 0.5);}
+::-moz-placeholder {font-size: 13px; font-weight: 600; color: rgba(0,0,0, 0.5);}
+:-ms-input-placeholder {font-size: 13px; font-weight: 600; color: rgba(0,0,0, 0.5);}
+.toggleshowpassword{ position: absolute; top: 8px; right: 8px; cursor: pointer;}
+.toggleshowpassword svg{ font-size: 22px; color: rgba(0,0,0, 0.6);}
+.form-group .link{ font-size: 14px; text-transform:uppercase; color: rgba(0,0,0, 0.5); font-weight: 600;}
+.loginsection{background: url('./assets/images/pattern1.png') !important;
+  padding: 0px 0px;
+  height: 500;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-blend-mode: color;}
+.loginsection .loginbox .wrapper .or span.line{display: block; width: 35%; height: 1px;
+background: rgba(0,0,0, 0.2);
+}
+.loginsection .loginbox .wrapper .or span.txt{display: flex; align-items: center; justify-content: center; font-size: 16px;
+font-weight: 600; width: 40px; height: 40px; border: 1px solid rgba(0,0,0, 0.2); border-radius: 50px;
+}
+.loginsection .loginbox .btn-google{ padding: 10px 25px !important; font-size: 14px !important; background: #3b5998;
+color: #ffffff; font-weight: 500;
+}
+.loginsection .loginbox .btn-twtr{ padding: 10px 25px !important; font-size: 14px !important; background: #00acee;
+  color: #ffffff; font-weight: 500;
+  }
+.loginsection .loginbox .btn-google svg{ font-size: 22px;}
+.loginsection .loginbox .btn-twtr svg{ font-size: 22px;}
+.loginsection .loginbox .wrapper .rgstr{ color: rgba(0,0,0, 0.7); font-weight: 600; font-size: 16px;}
+
+.signupsection{background: url('./assets/images/pattern1.png') !important;
+  padding: 0px 0px;
+  height: 500;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  background-color: rgba(255, 255, 255, 0.9) !important;
+  background-blend-mode: color;
+}
+.signupsection .loginbox{ background: #d8d7d7 !important; width: 100% !important; padding: 25px 25px !important;}
+.signupsection .loginbox .rhdng{ font-size: 18px !important; color: rgba(0,0,0, 0.6); font-weight: 600;}
+.signupsection .text-sky{ color: #8d6b75 !important;}
+.signupsection .loginbox .wrapper{padding: 0px 60px !important;
+  box-shadow: 2px 10px 15px 10px rgba(255, 255, 255, 0.5);
+  border: 1px solid #ede8e8 !important;}
+.signupsection .part1{ padding-left: 100px;}
+.signupsection .part1 h1{ font-size: 50px;
+  font-weight: 800;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.7); padding-bottom: 20px;}
+.signupsection .part1 p{ font-size: 16px;
+  font-weight: 600;
+  text-align: left;
+  padding-right: 100px;
+  color: rgba(0, 0, 0, 0.6);
+  padding-right: 150px;}
+.signupsection .css-19opgx6-MuiFormControlLabel-root .MuiFormControlLabel-label{
+font-size: 13px !important; color: rgba(0,0,0, 0.5); font-weight: 600;
+}
+.signupsection .loginbox .wrapper .form-group{ margin-top:15px !important;}
+.signupsection .morebtn{ text-align: left !important; justify-content: left !important;}
+.signupsection .morebtn span button{   background-image: linear-gradient(180deg, black, #797575);
+  color: rgba(255, 255, 255, 0.7);
+  box-shadow: 9px 6px 5px #33333359;
+  padding: 10px 20px;
+  font-weight: 600;}
+  .signupsection .morebtn span button svg{ font-size: 18px !important;}
+.signupsection .css-1umw9bq-MuiSvgIcon-root{ fill: rgb(59 61 63) !important;}
+.slidersml .slick-slide{ padding-right: 10px;}
+.slidersml .slick-slide .item{ border-radius: 7px !important; overflow: hidden;
+ border: 1px solid rgba(0,0,0, 0.3); box-shadow: 1px 2px 3px rgba(0,0,0, 0.4);
+}
+.right-content .smlheading{font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.7); background-image: linear-gradient(180deg, #eae9e9, transparent);
+  padding: 10px 10px; display: flex;}
+.slidersml *,.sliderbig *{transition: all 0.2s !important;}
+.sliderbig .item{overflow: hidden; border-radius: 7px;}
+.productinfo{padding-left: 10px;}
+.productinfo .icon{ width: 28%; flex: 0 0 28%;}
+.productinfo .icon svg{ font-size: 20px; color: rgba(0,0,0, 0.6);}
+.productinfo .name{    width: 72%;
+  flex: 0 0 72%;
+  font-weight: 600;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.6);}
+.productinfo .name svg{ font-size: 22px;}
+.productinfo .row{ margin-bottom: 15px !important;}
+.productinfo .row .col-sm-9{ display: flex; align-items: center;}
+.productinfo .row .col-sm-9 span{opacity: 0.8; font-size: 15px; padding-left: 10px;}
+.tags{ margin-bottom: 0px !important;}
+.tags li span{display: flex
+  ;
+      align-items: center;
+      justify-content: center;
+      background: #cccccc;
+      padding: 1px 15px !important;
+      border-radius: 10px; font-size: 12px !important; text-transform: uppercase; font-weight: 600;}
+
+.detlhdng{    font-size: 18px !important;
+  text-transform: none !important;
+  color: rgba(0, 0, 0, 0.7) !important; padding-left: 10px;}
+.right-content h5{font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.6); text-transform: capitalize;}
+  .right-content p{    font-size: 15px;
+    color: rgba(0, 0, 0, 0.6);
+    font-weight: 400;}
+  .ratingsection{ width: 500px;}
+  .ratingsection .ratingrow{ width: 100%; margin-bottom: 15px;}
+  .ratingsection .ratingrow .col1{width: 15%; flex: 0 0 15%; display: flex;}
+  .ratingsection .ratingrow .col2{ width: 50%; flex:0 0 50%;}
+  .ratingsection .ratingrow .col3{width: 25%; flex: 0 0 25%; display: flex; padding-left: 20px;}
+  .ratingsection .ratingrow .progress{ height: 10px !important; background-color: #808284 !important;}
+  .ratingsection .ratingrow .progress .progress-bar{ background: #e19729; height: 10px !important;}
+  .reviewsection{ width: 100%; display: flex; flex-direction: column;}
+  .reviewsection .reviewsrow{width: 100%;
+    height: auto;
+    background: #eeeeee;
+    padding: 15px 50px;
+    border-radius: 10px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+  }
+  .reviewsection .reviewsrow .userImg{ width: 60px !important; height: 60px !important;}
+  .reviewsection .reviewsrow .info h5{ margin-bottom: 0px; font-size: 18px; font-weight: 600; color: rgba(0,0,0, 0.7);}
+  .reviewsection .reviewsrow .info span{ font-size: 14px; font-weight: 600; color: rgba(0,0,0, 0.5);}
+  .reviewsection .reviewsrow .tp_headrow{ width: 100%;}
+  .reviewsection .reviewsrow .tp_headrow .col-md-12{padding-left: 0px !important;}
+  .reviewsection .userallinfo button{    background: rgba(0, 0, 0, 0.5);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 600;
+    padding: 8px 25px;}
+  .userallinfo button svg{ font-size: 20px;}
+
+  .reviewsection .reviewsrow.reply{ width: 80%; margin-left: auto;}
+  .formsection textarea{width: 100%;
+    height: 190px;
+    padding: 20px;
+    outline: none;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    background: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 1px 2px 3px rgba(0, 0, 0, 0.2);}
+  .formsection button{    text-align: center;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+    margin-top: 20px;}
+  .form .form-group{ margin-bottom: 20px !important;}
+  .form .form-group h6{     margin-bottom: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.6);}
+  .form .form-group input,.form .form-group textarea{ width: 100%; border: 1px solid rgba(0,0,0, 0.2); outline: none; height: 40px;
+  border-radius: 4px; padding-left: 15px; font-size: 15px;
+  }
+  .form .form-group textarea{ height: 120px; padding-top: 15px;}
+  .selectbox .css-sc8y68-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{ 
+    width: 100% !important;}
+  .selectbox input{ height: 40px !important;}
+  .selectbox .categoryval{ height: 40px !important;}
+  .form-group .rghtinput{ width: 300px !important;}
+  .rightfrmarea button{ background: #4e4c4c !important;
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 500;
+    padding-left: 30px;
+    padding-right: 30px;}
+
+  .div { width: 100%; float: left; margin-right:10px; padding-left: 5px; min-width: 150px;
+  max-height: 80px; float: left; position: relative; position: absolute; white-space:inherit;
+  }
+  .imguploadbox{ width: 100%; flex-wrap: nowrap; gap: 10px;}
+  .imguploadbox .uploadbox .box{ width: 100%; height: 150px !important; overflow: hidden;
+  border-radius: 7px;
+  }
+  .imguploadbox .uploadbox .box .lazy-load-image-background{ height: 100% !important; width: 100% !important;}
+  .addcategory button{    background: rgba(0, 0, 0, 0.6);
+    color: #eeeeee;
+    font-weight: 500;
+    font-size: 16px;}
+    
+  
+  
