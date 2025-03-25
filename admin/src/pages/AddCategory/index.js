@@ -1,9 +1,10 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { emphasize, styled } from '@mui/material/styles';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Chip from '@mui/material/Chip';
 import { IoMdHome } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
+import { MyContext } from '../../App';
 
 
 
@@ -13,6 +14,7 @@ import { useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { fatchDataFromApi, postData } from '../utils/api';
 import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 
@@ -52,7 +54,7 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 const AddCategory = ()=>{
 
   const [isLoading, setIsLoading] = useState(false);
-  const [error_ , setError] = useState(false)
+  
   
 
   const [formFields,setFormFields] = useState({
@@ -70,6 +72,10 @@ const AddCategory = ()=>{
     ))
   }
 
+ 
+
+ 
+
   const addImgUrl = (e)=>{
     const arr = [];
     arr.push(e.target.value);
@@ -82,6 +88,8 @@ const AddCategory = ()=>{
   }
 
   const history = useNavigate();
+  const context = useContext(MyContext);
+ 
 
   const addCategory = (e)=>{
     e.preventDefault();
@@ -95,7 +103,12 @@ const AddCategory = ()=>{
     }
 
       else{
-        setError(true);
+        context.setAlertBox({
+          open:true,
+          color:'Success',
+          msg:'Please Fill all the details'
+        })
+        
       }
    
    
@@ -152,7 +165,6 @@ const AddCategory = ()=>{
             <div className='col-sm-12 addcategory'>
             <div className='card p-4'>
                 <h5 className='mb-4'>Basic Information</h5>
-                {error_===true && <p className='text-danger'>All Feilds are required*</p>}
                 <div className='form-group'>
                     <h6>Category Name</h6>
                     <input type='text' name='name' onChange={changeInput} />

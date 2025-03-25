@@ -4,7 +4,7 @@ import './App.css';
 import Dashboard from "./pages/Dashboard";
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { createContext, useEffect, useState } from 'react';
+import React,{ createContext, useEffect, useState } from 'react';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -12,6 +12,8 @@ import ProductDetails from './pages/ProductDetails';
 import ProductUpload from './pages/ProductUpload';
 import Category from './pages/Category';
 import AddCategory from './pages/AddCategory';
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 
 const MyContext = createContext();
@@ -21,12 +23,19 @@ function App() {
   const [isLogin,setIsLogin] = useState(false);
   const [isHideSidebarAndHeader,setIsHideSidebarAndHeader] = useState(false);
   const [themeMode,setthemeMode] = useState(true);
+  const [alertBox, setAlertBox] = useState({
+    msg:'',
+    color:'',
+    open:false
+  })
+
 
   useEffect(()=>{
     if(themeMode===true){
       document.body.classList.remove('dark');
       document.body.classList.add('light');
       localStorage.setItem('themeMode','light');
+      
     }
     else{
       document.body.classList.remove('light');
@@ -36,6 +45,22 @@ function App() {
    
   },[themeMode]);
 
+  const handleClose = (event, reason) => {
+    if (reason === 'clickaway') {
+      return;
+    }
+
+    setAlertBox({
+      open:false,
+      msg:''
+    });
+  };
+
+ // const handleClickVariant = (variant) => () => {
+    // variant could be success, error, warning, info, or default
+   // enqueueSnackbar('This is a success message!', { variant });
+ // };
+
   const values={
     isToggleSidebar,
     setIsToggleSidebar,
@@ -44,13 +69,28 @@ function App() {
     isHideSidebarAndHeader,
     setIsHideSidebarAndHeader,
     themeMode,
-    setthemeMode
+    setthemeMode,
+    alertBox,
+    setAlertBox
+    
   }
   
   return (
    <>
   <BrowserRouter>
   <MyContext.Provider value={values}>
+
+  <Snackbar open={alertBox.open} autoHideDuration={6000} onClose={handleClose}>
+        <Alert
+          onClose={handleClose}
+          severity="success"
+          variant="filled"
+          sx={{ width: '100%' }}
+        >
+         {alertBox.msg}
+        </Alert>
+      </Snackbar>
+ 
   {
       isHideSidebarAndHeader!== true &&
   <Header />
@@ -79,6 +119,8 @@ function App() {
     </div>
 
   </div>
+
+
 
   </MyContext.Provider>
 
