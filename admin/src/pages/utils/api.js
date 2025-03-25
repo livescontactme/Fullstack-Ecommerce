@@ -29,3 +29,9 @@ export const editData = async (url, updatedData) =>{
     const {res} = await axios.put(`http://127.0.0.1:4000${url}`, updatedData)
     return res;
 }
+
+export const deleteData = async (url)=>{
+    console.log('url',url);
+const {res} = await axios.delete(`http://127.0.0.1:4000${url}`)
+return res;
+}

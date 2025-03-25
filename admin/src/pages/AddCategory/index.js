@@ -3,6 +3,7 @@ import { emphasize, styled } from '@mui/material/styles';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Chip from '@mui/material/Chip';
 import { IoMdHome } from "react-icons/io";
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -11,6 +12,7 @@ import { IoMdHome } from "react-icons/io";
 
 import Button from '@mui/material/Button';
 import { fatchDataFromApi, postData } from '../utils/api';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -48,6 +50,8 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 
 
 const AddCategory = ()=>{
+
+  const [isLoading, setIsLoading] = useState(false);
   
 
   const [formFields,setFormFields] = useState({
@@ -76,11 +80,15 @@ const AddCategory = ()=>{
     ))
   }
 
+  const history = useNavigate();
+
   const addCategory = (e)=>{
     e.preventDefault();
+    setIsLoading(true);
     console.log(formFields);
     postData('/api/category/create', formFields).then(res=>{
-      console.log(res);
+      setIsLoading(false);
+      history('/category')
     })
   }
     
@@ -146,7 +154,9 @@ const AddCategory = ()=>{
                     <h6>Color</h6>
                     <input type='text' name='color' onChange={changeInput} />
                 </div>
-                <Button type="submit">Add Category</Button>
+                <Button type="submit">
+                  {isLoading===true ? <CircularProgress color="inherit" className='ml-3 loader' /> : 'Add Category'}
+                </Button>
                
             </div>
             </div>

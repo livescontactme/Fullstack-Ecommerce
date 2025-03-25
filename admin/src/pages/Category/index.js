@@ -6,7 +6,7 @@ import { FaPencil } from "react-icons/fa6";
 import { MdDelete } from "react-icons/md";
 import Pagination from '@mui/material/Pagination';
 import { MyContext } from "../../App";
-import { editData, fatchDataFromApi } from '../utils/api';
+import { deleteData, editData, fatchDataFromApi } from '../utils/api';
 import { data, Link } from 'react-router-dom';
 
 
@@ -122,6 +122,15 @@ const Category = () => {
       
     }
 
+    const deleteCat = (id)=>{
+      deleteData(`/api/category/${id}`).then((res)=>{
+        fatchDataFromApi('/api/category').then((res)=>{
+          setCatData(res);
+        })
+      
+      })
+    }
+
    
 
   return (
@@ -156,7 +165,7 @@ const Category = () => {
             {
               catData?.categoryList?.length!==0 && catData?.categoryList?.map((item,index)=>{
                   return(
-                    <tr>
+                    <tr key={index+1}>
                     <td>#{index+1}</td>
                     <td>
                       <div className='d-flex productbox align-items-center justify-content-center'>
@@ -181,7 +190,7 @@ const Category = () => {
                       <div className="d-flex align-items-center actions">
                         <Button className="secondary" color="secondary"><FaEye /></Button>
                         <Button className="success" color="success" onClick={()=>editCategory(item.id)}><FaPencil /></Button>
-                        <Button className="error" color="error"><MdDelete /></Button>
+                        <Button className="error" color="error" onClick={()=>deleteCat(item.id)}><MdDelete /></Button>
                       </div>
                     </td>
                   </tr>
