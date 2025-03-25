@@ -14,8 +14,8 @@ import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogContentText from '@mui/material/DialogContentText';
-import DialogTitle from '@mui/material/DialogTitle';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 
 
@@ -40,7 +40,7 @@ const Category = () => {
       images:[],
       color:''
     })
-  
+  const [isLoading, setIsLoading] = useState(false);
 
     
     const context = useContext(MyContext);
@@ -109,11 +109,13 @@ const Category = () => {
 
     const editcategoryFun = (e)=>{
       e.preventDefault();
+      setIsLoading(true);
 
       editData(`/api/category/${editId}`, formFields).then((res)=>{
         fatchDataFromApi('/api/category').then((res)=>{
           setCatData(res);
-          console.log(res);
+          setOpen(false);
+          setIsLoading(false);
         })
         
       })
@@ -289,7 +291,9 @@ const Category = () => {
         </DialogContent>
         <DialogActions>
           <Button onClick={handleClose} variant='outlined'>Cancel</Button>
-          <Button type="button" onClick={editcategoryFun} variant='contained' className='btn-submit'>Submit</Button>
+          <Button type="button" onClick={editcategoryFun} variant='contained' className='btn-submit'> 
+            {isLoading===true ? <CircularProgress color="inherit" className='ml-3 loader' /> : 'Submit'}
+          </Button>
           <br />
           <br/>
         </DialogActions>
