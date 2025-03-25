@@ -1,16 +1,16 @@
 const Category = require('../models/category');
 const express = require('express');
 const router = express.Router();
-// const pLimit = require('p-limit');
-// const limit = pLimit(2);
-// const cloudinary = require('cloudinary').v2;
+ const pLimit = require('p-limit');
+ const limit = pLimit(2);
+ const cloudinary = require('cloudinary').v2;
 
 
-// cloudinary.config({
-//     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-//     api_key: process.env.CLOUDINARY_API_KEY,
-//     api_secret: process.env.CLOUDINARY_API_SECRET,
-// });
+ cloudinary.config({
+     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+     api_key: process.env.CLOUDINARY_API_KEY,
+     api_secret: process.env.CLOUDINARY_API_SECRET,
+ });
 
 router.get(`/`, async (req, res) => {
 
@@ -75,40 +75,40 @@ router.delete('/:id', async (req, res) => {
 router.post('/create', async (req, res) => {
     
 
-    // const limit = pLimit(2);
+    const limit = pLimit(2);
     
 
-    // const imagesToUpload = req.body.images.map((image) => {
+    const imagesToUpload = req.body.images.map((image) => {
 
 
-    //     return limit(async () => {
+        return limit(async () => {
 
 
 
 
-    //         try {
-    //             const result = await cloudinary.uploader.upload(image);
-    //             console.log('Upload Success:', result);
-    //             return result;
-    //         } catch (error) {
-    //             console.error('Upload Error:', error);
-    //         }
+            try {
+                const result = await cloudinary.uploader.upload(image);
+                console.log('Upload Success:', result);
+                return result;
+            } catch (error) {
+                console.error('Upload Error:', error);
+            }
 
-    //     })
-    // });
+        })
+    });
 
-    // const uploadStatus = await Promise.all(imagesToUpload);
+    const uploadStatus = await Promise.all(imagesToUpload);
 
-    // const imgUrl = uploadStatus.map((item) => {
-    //     return item.secure_url
-    // })
+    const imgUrl = uploadStatus.map((item) => {
+        return item.secure_url
+    })
 
-    // if (!uploadStatus) {
-    //     return res.status(500).json({
-    //         error: "images cannot upload!",
-    //         status: false
-    //     })
-    // }
+    if (!uploadStatus) {
+        return res.status(500).json({
+            error: "images cannot upload!",
+            status: false
+        })
+    }
     
     let category = new Category({
         name: req.body.name,
@@ -130,7 +130,7 @@ router.post('/create', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
 
-    // const limit = pLimit(2);
+     const limit = pLimit(2);
     //////
 
     const imagesToUpload = req.body.images.map((image) => {

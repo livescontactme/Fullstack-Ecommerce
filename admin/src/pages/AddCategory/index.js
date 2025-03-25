@@ -48,6 +48,7 @@ const StyledBreadcrumb = styled(Chip)(({ theme }) => {
 
 
 const AddCategory = ()=>{
+  
 
   const [formFields,setFormFields] = useState({
     name:'',
@@ -77,7 +78,6 @@ const AddCategory = ()=>{
 
   const addCategory = (e)=>{
     e.preventDefault();
-    if(formFields.name!=="" && formFields.name!=="" &&)
     console.log(formFields);
     postData('/api/category/create', formFields).then(res=>{
       console.log(res);
@@ -156,6 +156,15 @@ const AddCategory = ()=>{
         </form>
         </div>
         </div>
+
+
+
+
+
+      
+
+
+
         </>
     )
 }
