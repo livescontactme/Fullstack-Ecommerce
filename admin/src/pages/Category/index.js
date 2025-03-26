@@ -48,9 +48,11 @@ const Category = () => {
     useEffect(()=>{
       context.setIsHideSidebarAndHeader(false);
       window.scrollTo(0,0);
+      context.setProgress(20)
       fatchDataFromApi('/api/category').then((res)=>{
         setCatData(res);
         console.log(res);
+       context.setProgress(100)
       })
     },[]);
     

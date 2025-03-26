@@ -105,9 +105,11 @@ const AddCategory = ()=>{
       else{
         context.setAlertBox({
           open:true,
-          color:'Success',
+          error:true,
           msg:'Please Fill all the details'
-        })
+        });
+
+        return(false);
         
       }
    

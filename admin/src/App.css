@@ -1070,6 +1070,7 @@ font-size: 13px !important; color: rgba(0,0,0, 0.5); font-weight: 600;
     font-size: 16px;}
   .editmodal .btn-submit{ background: #333333 !important; color: #ffffff; font-size: 14px; font-weight: 500;}
   button .loader{ width: 25px !important; height: 24px !important;}
+  .topLodingBar{ height: 5px !important;}
     
   
   
