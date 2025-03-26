@@ -16,6 +16,10 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 0
     },
+    oldPrice: {
+        type: Number,
+        default: 0
+    },
     images: [
         {
             type: String,
@@ -36,10 +40,7 @@ const productSchema = mongoose.Schema({
         type: Number,
         default: 0,
     },
-    numReviews: {
-        type: Number,
-        default: 0,
-    },
+   
     isFeatured: {
         type: Boolean,
         default: false,

@@ -63,13 +63,13 @@ console.log("req.body", req.body);
         name: req.body.name,
         description: req.body.description,
         brand: req.body.brand,
+        oldPrice: req.body.oldPrice,
         price: req.body.price,
         images: imgUrl,
         category: req.body.category,
         CountInStock: req.body.CountInStock,
         rating: req.body.rating,
-        numReviews: req.body.numReviews,
-        isFeatured: req.body.isFeatured,
+       isFeatured: req.body.isFeatured,
     });
 
     product = await product.save();

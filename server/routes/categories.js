@@ -1,53 +1,53 @@
 const Category = require('../models/category');
 const express = require('express');
 const router = express.Router();
- const pLimit = require('p-limit');
- const limit = pLimit(2);
- const cloudinary = require('cloudinary').v2;
+const pLimit = require('p-limit');
+const limit = pLimit(2);
+const cloudinary = require('cloudinary').v2;
 
 
- cloudinary.config({
-     cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-     api_key: process.env.CLOUDINARY_API_KEY,
-     api_secret: process.env.CLOUDINARY_API_SECRET,
- });
+cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+});
 
 router.get(`/`, async (req, res) => {
 
-try{
+    try {
 
-    const page = parseInt(req.query.page) || 1;
-    const perPage = 3;
-    const totalPosts = await Category.countDocuments();
-    const totalPages = Math.ceil(totalPosts / perPage);
-    
-    if(page > totalPages){
-        return res.status(404).json({message: "page not found"})
-    }
+        const page = parseInt(req.query.page) || 1;
+        const perPage = 3;
+        const totalPosts = await Category.countDocuments();
+        const totalPages = Math.ceil(totalPosts / perPage);
 
-    const categoryList = await Category.find()
-    .skip((page - 1) * perPage)
-    .limit(perPage)
-    .exec();
+        if (page > totalPages) {
+            return res.status(404).json({ message: "page not found" })
+        }
+
+        const categoryList = await Category.find()
+            .skip((page - 1) * perPage)
+            .limit(perPage)
+            .exec();
 
 
 
-    if (!categoryList) {
+        if (!categoryList) {
+            res.status(500).json({ success: false })
+        }
+        return res.status(200).json({
+            "categoryList": categoryList,
+            "totalPages": totalPages,
+            "page": page
+        })
+
+        res.send(categoryList);
+    } catch (error) {
         res.status(500).json({ success: false })
     }
-    return res.status(200).json({
-        "categoryList":categoryList,
-        "totalPages":totalPages,
-        "page":page
-    })
 
-    res.send(categoryList);
-}catch(error){
-    res.status(500).json({success: false})
-}
 
-    
-   
+
 });
 
 router.get('/:id', async (req, res) => {
@@ -73,10 +73,10 @@ router.delete('/:id', async (req, res) => {
 });
 
 router.post('/create', async (req, res) => {
-    
+
 
     const limit = pLimit(2);
-    
+
 
     const imagesToUpload = req.body.images.map((image) => {
 
@@ -109,7 +109,7 @@ router.post('/create', async (req, res) => {
             status: false
         })
     }
-    
+
     let category = new Category({
         name: req.body.name,
         images: req.body.images,
@@ -130,7 +130,7 @@ router.post('/create', async (req, res) => {
 
 router.put('/:id', async (req, res) => {
 
-     const limit = pLimit(2);
+    const limit = pLimit(2);
     //////
 
     const imagesToUpload = req.body.images.map((image) => {
