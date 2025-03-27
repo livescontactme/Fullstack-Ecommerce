@@ -46,6 +46,9 @@ const ProductUpload = () => {
   const [categoryVal, setcategoryVal] = useState('');
   const [brandVal, setbrandVal] = useState('');
   const [isFeaturedValue, setIsFeaturedValue] = useState(false);
+  const [productImagesArr, setProductImages] = useState([]);
+  const productImages = useRef();
+  const imagesArr=[];
   const handleChangeCategory = (event) => {
     setcategoryVal(event.target.value);
     console.log("event", event);
@@ -56,6 +59,11 @@ const ProductUpload = () => {
   };
   const handleChangeisFeatured = (event) => {
     setIsFeaturedValue(event.target.value);
+  }
+
+  const addProductImage = ()=>{
+    imagesArr.push(productImages.current.value)
+    setProductImages(imagesArr);
   }
 
   return (
@@ -207,7 +215,10 @@ const ProductUpload = () => {
                         </div>
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Image</h6>
-                          <input type="text" name='offerprice' />
+                         <div className='position-relative inputBtn'>
+                         <input type="text" name='product image' ref={productImages} />
+                         <Button className='btn-blue img_btn' onClick={addProductImage}>Add</Button>
+                         </div>
                         </div>
                       </div>
                     </div>
@@ -261,16 +272,23 @@ const ProductUpload = () => {
 
               <div className='col-md-12'>
                 <div className='card p-4'>
-                <h3>image grid</h3>
+                  {
+                     productImagesArr?.length!==0 &&  <h3>Product Images</h3>
+                  }
+               
                   <div className='imgGrid'>
-                  <div className='img'>
-                  <img src="https://www.jiomart.com/images/product/original/rv4jn73vah/limestone-analog-black-dial-black-strap-watch-for-men-ls2917-product-images-rv4jn73vah-0-202308232116.jpg?im=Resize=(330,410)" alt='' />
-                  
-                </div>
-                <div className='img'>
-                  <img src="https://www.jiomart.com/images/product/original/rvukkyvqgu/jamarion-trendy-stylish-puma-style-sneakers-for-men-black-product-images-rvukkyvqgu-0-202305171215.jpg?im=Resize=(330,410)" alt='' />
-                  
-                </div>
+                    {
+                      productImagesArr?.length!==0 && productImagesArr?.map((item,index)=>{
+                        return(
+                          <div className='img'>
+                          <img src={item} alt='' />
+                          
+                        </div>
+                        )
+                      })
+                    }
+                
+               
                   </div>
                 
              
