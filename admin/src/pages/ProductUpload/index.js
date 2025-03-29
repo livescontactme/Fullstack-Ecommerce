@@ -1,4 +1,6 @@
-import React, { useRef, useState } from 'react';
+import React from "react";
+
+import {useContext, useRef, useState } from 'react';
 import { emphasize, styled } from '@mui/material/styles';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Chip from '@mui/material/Chip';
@@ -8,6 +10,9 @@ import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { IoCloseSharp } from "react-icons/io5";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
+import { fatchDataFromApi } from '../utils/api';
+import { useEffect } from 'react';
+import { MyContext } from '../../App';
 
 
 
@@ -44,27 +49,73 @@ function handleClick(event) {
 const ProductUpload = () => {
 
   const [categoryVal, setcategoryVal] = useState('');
-  const [brandVal, setbrandVal] = useState('');
   const [isFeaturedValue, setIsFeaturedValue] = useState(false);
-  const [productImagesArr, setProductImages] = useState([]);
+  const [catData, setCatData] = useState([]);
+  const [formFields, setFormFields] = useState({
+    name:'',
+    description:'',
+    brand:'',
+    price:0,
+    oldPrice:0,
+    images:[],
+    category:'',
+    CountInStock:0,
+    rating:0,
+    isFeatured:false
+  });
+
+  
+  
   const productImages = useRef();
+
+  const context = useContext(MyContext);
+
+ 
+
+  useEffect(()=>{
+       
+       window.scrollTo(0,0);
+       context.setProgress(20)
+       
+       fatchDataFromApi('/api/category').then((res)=>{
+       
+        setCatData(res);
+        context.setProgress(100)
+       })
+      
+     },[]);
+
+
   const imagesArr=[];
   const handleChangeCategory = (event) => {
     setcategoryVal(event.target.value);
     console.log("event", event);
   };
-  const handleChangebrand = (event) => {
-    setbrandVal(event.target.value);
+  // const handleChangebrand = (event) => {
+  //   setbrandVal(event.target.value);
 
-  };
+  // };
   const handleChangeisFeatured = (event) => {
     setIsFeaturedValue(event.target.value);
   }
 
   const addProductImage = ()=>{
-    imagesArr.push(productImages.current.value)
-    setProductImages(imagesArr);
+
+    const imgGrid = document.querySelector('#imgGrid');
+    const imgData = `<div class='img'>
+                      <img src="${productImages.current.value}" alt="image" class="w-100" />
+                    </div>`;
+
+                    imgGrid.insertAdjacentHTML('beforeend', imgData);
+                    productImages.current.value = "";
+
+
+   
   }
+
+  
+
+ 
 
   return (
     <>
@@ -129,28 +180,22 @@ const ProductUpload = () => {
                             <MenuItem value="" >
                               <em>None</em>
                             </MenuItem>
-                            <MenuItem value={'Men'}>Men</MenuItem>
-                            <MenuItem value={'Women'}>Women</MenuItem>
-                            <MenuItem value={'kids'}>Kids</MenuItem>
+                            {
+                              catData?.categoryList?.length !== 0 && catData?.categoryList?.map((cat,index)=>{
+                                return(
+                                  <MenuItem value={cat.name} key={index}>{cat.name}</MenuItem>
+                                )
+                               
+                              })
+                            }
+                           
+                           
                           </Select>
                         </div>
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Brand</h6>
-                          <Select
-                            value={brandVal}
-                            className='categoryval'
-                            onChange={handleChangebrand}
-                            displayEmpty
-                            inputProps={{ 'aria-label': 'Without label' }}
-                          >
-                            <MenuItem value="" >
-                              <em>None</em>
-                            </MenuItem>
-                            <MenuItem value={'Jeens'}>Jeens</MenuItem>
-                            <MenuItem value={'Shirts'}>Shirts</MenuItem>
-                            <MenuItem value={'Pant'}>Pant</MenuItem>
-                          </Select>
+                         <input type='text' />
                         </div>
                       </div>
 
@@ -216,9 +261,20 @@ const ProductUpload = () => {
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Image</h6>
                          <div className='position-relative inputBtn'>
-                         <input type="text" name='product image' ref={productImages} />
+                         <input type="text" name='product image' ref={productImages} style={{paddingRight:'80px'}} />
                          <Button className='btn-blue img_btn' onClick={addProductImage}>Add</Button>
                          </div>
+                        </div>
+                      </div>
+                      <br />
+                      <br />
+                      <div className='row'>
+                        <div className='col-md-12'>
+                        <div>
+                    <Button type='submit' className='btn-blue btn-lg'>
+                      Add Product
+                    </Button>
+                  </div>
                         </div>
                       </div>
                     </div>
@@ -267,26 +323,16 @@ const ProductUpload = () => {
                       </span>
                     </div>
                   </div>
+                 
                 </div>
               </div>
 
               <div className='col-md-12'>
                 <div className='card p-4'>
-                  {
-                     productImagesArr?.length!==0 &&  <h3>Product Images</h3>
-                  }
+                 
                
-                  <div className='imgGrid'>
-                    {
-                      productImagesArr?.length!==0 && productImagesArr?.map((item,index)=>{
-                        return(
-                          <div className='img'>
-                          <img src={item} alt='' />
-                          
-                        </div>
-                        )
-                      })
-                    }
+                  <div className='imgGrid' id='imgGrid'>
+                    
                 
                
                   </div>
