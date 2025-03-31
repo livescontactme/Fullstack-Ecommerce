@@ -167,6 +167,20 @@ const ProductUpload = () => {
         error:false
         
       })
+    });
+
+    setFormFields({
+      name:'',
+    description:'',
+    brand:'',
+    price:0,
+    oldPrice:0,
+    images:[],
+    category:'',
+    CountInStock:0,
+    rating:0,
+    isFeatured:false,
+    images:[]
     })
   
   }
@@ -217,12 +231,12 @@ const ProductUpload = () => {
                   <h5 className='mb-4'>Basic Information</h5>
                   <div className='form-group'>
                     <h6>Product Name</h6>
-                    <input type='text' name='name' onChange={inputChange} />
+                    <input type='text' name='name' value={formFields.name} onChange={inputChange} />
                   </div>
                   <div className='form-group'>
                     <h6>Discription</h6>
                     <textarea rows={5} cols={10} placeholder='Type here...' name="description"
-                    onChange={inputChange}/>
+                    onChange={inputChange} value={formFields.description}/>
                   </div>
                   <div className='form-group'>
                     <div className='w-100'>
@@ -254,19 +268,19 @@ const ProductUpload = () => {
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Brand</h6>
-                         <input type='text' name="brand" onChange={inputChange} />
+                         <input type='text' name="brand" value={formFields.brand} onChange={inputChange} />
                         </div>
                       </div>
 
                       <div className='row'>
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Old Price</h6>
-                          <input type='text' name='oldPrice' onChange={inputChange} />
+                          <input type='text' name='oldPrice' value={formFields.oldPrice} onChange={inputChange} />
                         </div>
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Price</h6>
-                          <input type="text" name='price' onChange={inputChange} />
+                          <input type="text" name='price' value={formFields.price} onChange={inputChange} />
                         </div>
                       </div>
 
@@ -291,7 +305,7 @@ const ProductUpload = () => {
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Tax Free</h6>
-                          <input type="text" />
+                          <input type="text"  />
                         </div>
                       </div>
                      
@@ -299,13 +313,13 @@ const ProductUpload = () => {
                       <div className='row'>
                       <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Stock</h6>
-                          <input type='text' name='CountInStock' onChange={inputChange} />
+                          <input type='text' name='CountInStock' value={formFields.CountInStock} onChange={inputChange} />
                         </div>
                        
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Offer Price</h6>
-                          <input type="text" name='offerPrice' onChange={inputChange} />
+                          <input type="text" name='offerPrice' value={formFields.offerPrice} onChange={inputChange} />
                         </div>
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Image</h6>
