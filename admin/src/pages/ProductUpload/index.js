@@ -158,9 +158,10 @@ const ProductUpload = () => {
     e.preventDefault();
     formFields.images = productimagesArr;
 
-
+    console.log(formFields);
     postData('/api/products/create', formFields).then((res)=>{
-      context.AlertBox({
+      
+      context.setAlertBox({
         open:true,
         msg:'the product is created',
         error:false
@@ -282,8 +283,8 @@ const ProductUpload = () => {
                             <MenuItem value="" >
                               <em>None</em>
                             </MenuItem>
-                            <MenuItem value={'True'}>Ture</MenuItem>
-                            <MenuItem value={'False'}>False</MenuItem>
+                            <MenuItem value={true}>Ture</MenuItem>
+                            <MenuItem value={false}>False</MenuItem>
 
                           </Select>
                         </div>
