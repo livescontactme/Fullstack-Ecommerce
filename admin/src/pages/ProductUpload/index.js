@@ -5,12 +5,14 @@ import { emphasize, styled } from '@mui/material/styles';
 import Breadcrumbs from '@mui/material/Breadcrumbs';
 import Chip from '@mui/material/Chip';
 import { IoMdHome } from "react-icons/io";
+import Rating from '@mui/material/Rating';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { IoCloseSharp } from "react-icons/io5";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { fatchDataFromApi } from '../utils/api';
+import { fatchDataFromApi, postData } from '../utils/api';
+
 import { useEffect } from 'react';
 import { MyContext } from '../../App';
 
@@ -51,6 +53,9 @@ const ProductUpload = () => {
   const [categoryVal, setcategoryVal] = useState('');
   const [isFeaturedValue, setIsFeaturedValue] = useState(false);
   const [catData, setCatData] = useState([]);
+  const [procount, setProCount] = useState(0);
+  const [ratingValue, setratingValue] = useState(3);
+  const [productimagesArr, setproductimagesArr] = useState([]);
   const [formFields, setFormFields] = useState({
     name:'',
     description:'',
@@ -89,7 +94,11 @@ const ProductUpload = () => {
   const imagesArr=[];
   const handleChangeCategory = (event) => {
     setcategoryVal(event.target.value);
-    console.log("event", event);
+    setFormFields(()=>({
+      ...formFields,
+      category:event.target.value
+    
+    }))
   };
   // const handleChangebrand = (event) => {
   //   setbrandVal(event.target.value);
@@ -97,20 +106,68 @@ const ProductUpload = () => {
   // };
   const handleChangeisFeatured = (event) => {
     setIsFeaturedValue(event.target.value);
+    setFormFields(()=>({
+      ...formFields,
+      isFeatured:event.target.value
+    
+    }))
   }
+
+  
 
   const addProductImage = ()=>{
 
-    const imgGrid = document.querySelector('#imgGrid');
-    const imgData = `<div class='img'>
-                      <img src="${productImages.current.value}" alt="image" class="w-100" />
-                    </div>`;
-
-                    imgGrid.insertAdjacentHTML('beforeend', imgData);
-                    productImages.current.value = "";
+    setproductimagesArr(prevArray => [...prevArray, productImages.current.value]);
+    productImages.current.value = "";
 
 
-   
+
+    // const arr=[];
+
+    // const imgGrid = document.querySelector('#imgGrid');
+    // const imgData = `<div class='img'>
+    //                   <img src="${productImages.current.value}" alt="image" class="w-100" />
+    //                 </div>`;
+
+    //                 arr[procount]= productImages.current.value
+    //                 alert(procount+1); 
+    //                 setProCount(procount+1);
+    //                 setFormFields(()=>({
+    //                   ...formFields,
+    //                   images:arr
+                    
+    //                 }))
+
+    //                 imgGrid.insertAdjacentHTML('beforeend', imgData);
+    //                productImages.current.value = "";
+
+                   
+  
+  }
+
+    const inputChange = (e)=>{
+      setFormFields(()=>({
+        ...formFields,
+        [e.target.name]:e.target.value
+      }))
+    }
+      
+    
+
+  const addProduct = (e)=>{
+    e.preventDefault();
+    formFields.images = productimagesArr;
+
+
+    postData('/api/products/create', formFields).then((res)=>{
+      context.AlertBox({
+        open:true,
+        msg:'the product is created',
+        error:false
+        
+      })
+    })
+  
   }
 
   
@@ -152,18 +209,19 @@ const ProductUpload = () => {
 
         </div>
         <div className='w-100 border-0'>
-          <form className='form'>
+          <form className='form' onSubmit={addProduct}>
             <div className='row'>
               <div className='col-sm-7'>
                 <div className='card p-4'>
                   <h5 className='mb-4'>Basic Information</h5>
                   <div className='form-group'>
                     <h6>Product Name</h6>
-                    <input type='text' name='name' />
+                    <input type='text' name='name' onChange={inputChange} />
                   </div>
                   <div className='form-group'>
                     <h6>Discription</h6>
-                    <textarea rows={5} cols={10} placeholder='Type here...' />
+                    <textarea rows={5} cols={10} placeholder='Type here...' name="description"
+                    onChange={inputChange}/>
                   </div>
                   <div className='form-group'>
                     <div className='w-100'>
@@ -183,7 +241,7 @@ const ProductUpload = () => {
                             {
                               catData?.categoryList?.length !== 0 && catData?.categoryList?.map((cat,index)=>{
                                 return(
-                                  <MenuItem value={cat.name} key={index}>{cat.name}</MenuItem>
+                                  <MenuItem value={cat.id} key={index}>{cat.name}</MenuItem>
                                 )
                                
                               })
@@ -195,19 +253,19 @@ const ProductUpload = () => {
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Brand</h6>
-                         <input type='text' />
+                         <input type='text' name="brand" onChange={inputChange} />
                         </div>
                       </div>
 
                       <div className='row'>
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Old Price</h6>
-                          <input type='text' name='regularprice' />
+                          <input type='text' name='oldPrice' onChange={inputChange} />
                         </div>
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Price</h6>
-                          <input type="text" name='offerprice' />
+                          <input type="text" name='price' onChange={inputChange} />
                         </div>
                       </div>
 
@@ -235,35 +293,42 @@ const ProductUpload = () => {
                           <input type="text" />
                         </div>
                       </div>
-                      <div className='row'>
-                        <div className='col-md-12'>
-                          <div className='form-group'>
-                            <h6>Tags</h6>
-                            <textarea rows={5} cols={10} placeholder='Tags...' />
-                          </div>
-                        </div>
-                      </div>
+                     
 
                       <div className='row'>
                       <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Stock</h6>
-                          <input type='text' name='productstock' />
+                          <input type='text' name='CountInStock' onChange={inputChange} />
                         </div>
-                        <div className='col-md-6 selectbox mb-3'>
-                          <h6>Product Stock</h6>
-                          <input type='text' name='productstock' />
-                        </div>
+                       
 
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Offer Price</h6>
-                          <input type="text" name='offerprice' />
+                          <input type="text" name='offerPrice' onChange={inputChange} />
                         </div>
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Image</h6>
                          <div className='position-relative inputBtn'>
-                         <input type="text" name='product image' ref={productImages} style={{paddingRight:'80px'}} />
+                         <input type="text" name='images' onChange={inputChange} ref={productImages} style={{paddingRight:'80px'}} />
                          <Button className='btn-blue img_btn' onClick={addProductImage}>Add</Button>
                          </div>
+                        </div>
+                        <div className="col-md-6 selectbox mb-3">
+                        <div className="form-group">
+                    <h6>rating</h6>
+                    <Rating
+                    name="rating"
+                    value={ratingValue}
+                    onChange={(event, newValue) =>{
+                      setratingValue(newValue);
+                      setFormFields(()=>({
+                        ...formFields,
+                        rating:newValue
+                      
+                      }))
+                    }}
+                    />
+                  </div>
                         </div>
                       </div>
                       <br />
@@ -323,16 +388,30 @@ const ProductUpload = () => {
                       </span>
                     </div>
                   </div>
+
+                  
                  
                 </div>
               </div>
 
               <div className='col-md-12'>
                 <div className='card p-4'>
-                 
+                  {
+                    productimagesArr?.length!== 0 &&
+                    <h3>Product Image</h3>
+                  }
+                
                
                   <div className='imgGrid' id='imgGrid'>
-                    
+                    {
+                      productimagesArr?.map((image,index)=>{
+                        return(
+                          <div class='img'>
+                <img src={image} alt="image" class="w-100" />
+                     </div>
+                        )
+                      })
+                    }
                 
                
                   </div>
