@@ -15,6 +15,7 @@ import { fatchDataFromApi, postData } from '../utils/api';
 
 import { useEffect } from 'react';
 import { MyContext } from '../../App';
+import CircularProgress from '@mui/material/CircularProgress';
 
 
 
@@ -56,6 +57,7 @@ const ProductUpload = () => {
   const [procount, setProCount] = useState(0);
   const [ratingValue, setratingValue] = useState(3);
   const [productimagesArr, setproductimagesArr] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [formFields, setFormFields] = useState({
     name:'',
     description:'',
@@ -156,10 +158,12 @@ const ProductUpload = () => {
 
   const addProduct = (e)=>{
     e.preventDefault();
+    setIsLoading(true)
     formFields.images = productimagesArr;
 
     console.log(formFields);
     postData('/api/products/create', formFields).then((res)=>{
+      setIsLoading(false);
       
       context.setAlertBox({
         open:true,
@@ -168,6 +172,8 @@ const ProductUpload = () => {
         
       })
     });
+
+    
 
     setFormFields({
       name:'',
@@ -352,7 +358,7 @@ const ProductUpload = () => {
                         <div className='col-md-12'>
                         <div>
                     <Button type='submit' className='btn-blue btn-lg'>
-                      Add Product
+                      {isLoading===true ? <CircularProgress color="inherit" className='ml-3 loader' /> : 'Add Product'}
                     </Button>
                   </div>
                         </div>
