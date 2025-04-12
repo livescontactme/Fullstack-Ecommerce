@@ -159,7 +159,102 @@ const ProductUpload = () => {
   const addProduct = (e)=>{
     e.preventDefault();
     setIsLoading(true)
-    formFields.images = productimagesArr;
+    if(formFields.name===""){
+      setAlertBox({
+        open:true,
+        msg:'Please Fill the Product Name',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.description===""){
+      setAlertBox({
+        open:true,
+        msg:'Please Fill the Product description',
+        error:true
+      });
+      return false;
+    }
+
+
+    if(formFields.brand===""){
+      setAlertBox({
+        open:true,
+        msg:'Please Fill the Product brand Name',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.price!==0 && formFields.price!==""){
+      setAlertBox({
+        open:true,
+        msg:'Please Fill the Product price',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.oldPrice===""){
+      setAlertBox({
+        open:true,
+        msg:'Please Fill the Product oldPrice',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.category===""){
+      setAlertBox({
+        open:true,
+        msg:'Please select category',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.CountInStock===0 && formFields.CountInStock===""){
+      setAlertBox({
+        open:true,
+        msg:'Please add Product Count',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.rating===0){
+      setAlertBox({
+        open:true,
+        msg:'Please add Product Rating',
+        error:true
+      });
+      return false;
+    }
+
+
+    if(formFields.isFeatured===0){
+      setAlertBox({
+        open:true,
+        msg:'Please Select product is a Featured',
+        error:true
+      });
+      return false;
+    }
+
+    if(formFields.images.length===0){
+      setAlertBox({
+        open:true,
+        msg:'Please add Product Images',
+        error:true
+      });
+      return false;
+    }
+
+
+
+
+    
 
     console.log(formFields);
     postData('/api/products/create', formFields).then((res)=>{
@@ -187,7 +282,8 @@ const ProductUpload = () => {
     rating:0,
     isFeatured:false,
     images:[]
-    })
+    });
+    
   
   }
 
