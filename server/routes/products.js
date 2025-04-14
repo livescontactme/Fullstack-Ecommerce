@@ -1,3 +1,4 @@
+const nodemon = require('nodemon');
 const Category = require('../models/category.js');
 const Product = require('../models/product.js');
 const express = require('express');
@@ -26,6 +27,7 @@ router.post(`/create`, async (req, res) => {
 
 
     const imagesToUpload = req.body.images.map((image) => {
+        
 
 
         return limit(async () => {

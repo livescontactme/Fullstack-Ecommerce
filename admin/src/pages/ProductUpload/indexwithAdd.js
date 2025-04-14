@@ -15,7 +15,6 @@ import { fatchDataFromApi, postData } from '../utils/api';
 
 import { useEffect } from 'react';
 import { MyContext } from '../../App';
-import { FaRegImages } from "react-icons/fa6";
 import CircularProgress from '@mui/material/CircularProgress';
 
 
@@ -405,19 +404,25 @@ const ProductUpload = () => {
 
                           </Select>
                         </div>
+
                         <div className='col-md-6 selectbox mb-3'>
-                          <h6>Offer Price</h6>
-                          <input type="text" name='offerPrice' value={formFields.offerPrice} onChange={inputChange} />
+                          <h6>Tax Free</h6>
+                          <input type="text"  />
                         </div>
-                       
                       </div>
                      
 
                       <div className='row'>
-                     
+                      <div className='col-md-6 selectbox mb-3'>
+                          <h6>Product Stock</h6>
+                          <input type='text' name='CountInStock' value={formFields.CountInStock} onChange={inputChange} />
+                        </div>
                        
 
-                       
+                        <div className='col-md-6 selectbox mb-3'>
+                          <h6>Offer Price</h6>
+                          <input type="text" name='offerPrice' value={formFields.offerPrice} onChange={inputChange} />
+                        </div>
                         <div className='col-md-6 selectbox mb-3'>
                           <h6>Product Image</h6>
                          <div className='position-relative inputBtn'>
@@ -447,7 +452,11 @@ const ProductUpload = () => {
                       <br />
                       <div className='row'>
                         <div className='col-md-12'>
-                      
+                        <div>
+                    <Button type='submit' className='btn-blue btn-lg'>
+                      {isLoading===true ? <CircularProgress color="inherit" className='ml-3 loader' /> : 'Add Product'}
+                    </Button>
+                  </div>
                         </div>
                       </div>
                     </div>
@@ -502,55 +511,54 @@ const ProductUpload = () => {
                 </div>
               </div>
 
+              <div className='col-md-12'>
+                <div className='card p-4'>
+                  {
+                    productimagesArr?.length!== 0 &&
+                    <h3>Product Image</h3>
+                  }
+                
+               
+                  <div className='imgGrid' id='imgGrid'>
+                    {
+                      productimagesArr?.map((image,index)=>{
+                        return(
+                          <div class='img'>
+                <img src={image} alt="image" class="w-100" />
+                     </div>
+                        )
+                      })
+                    }
+                
+               
+                  </div>
+                
              
-
-             
+                </div>
+         
+        </div>
               <div className='col-md-12'>
                 <div className='card p-4 mt-0'>
                   <div className='imageuploadsection'>
-                    
-                   <div className='imagesUploadSec'>
-                   <h5>Images and Publish</h5>
-                   <div className="imgUploadBox d-flex align-items-center">
-                    <div className="uploadBox">
-                      <img src="https://mironcoder-hotash.netlify.app/images/product/single/01.webp" className="w-100" />
-                    </div>
-                    <div className="uploadBox">
-                      <img src="https://mironcoder-hotash.netlify.app/images/product/single/01.webp" className="w-100" />
-                    </div>
-                    <div className="uploadBox">
-                      <img src="https://mironcoder-hotash.netlify.app/images/product/single/01.webp" className="w-100" />
-                    </div>
-                    <div className="uploadBox">
-                      <img src="https://mironcoder-hotash.netlify.app/images/product/single/01.webp" className="w-100" />
-                    </div>
-                    <div className="uploadBox">
-                      <img src="https://mironcoder-hotash.netlify.app/images/product/single/01.webp" className="w-100" />
-                    </div>
-                    <div className="uploadBox">
-                      <img src="https://mironcoder-hotash.netlify.app/images/product/single/01.webp" className="w-100" />
-                    </div>
-                    <div className="uploadBox">
-                      <input type="file" />
-                      <div className="info">
-                        <FaRegImages />
-                        <h5>Image Upload</h5>
-                      </div>
-                    </div>
-                   </div>
-                   </div>
-                  </div>
-                  <br/>
-                  <div>
-                    <Button type='submit' className='btn-blue btn-lg'>
-                      {isLoading===true ? <CircularProgress color="inherit" className='ml-3 loader' /> : 'Add Product'}
-                    </Button>
-                  </div>
-                 
-                </div>
+                    <h5>Media and Publish</h5>
+                    <div className='imguploadbox'>
 
-                
-                
+
+                      <div className='uploadbox d-flex align-ites-cener'>
+                        <span className='remove'><IoCloseSharp /></span>
+                        <div className='Box'>
+                          <LazyLoadImage
+                            alt={"image"}
+                            effect="blur"
+                            className="w-100"
+                            src={'https://mironcoder-hotash.netlify.app/images/product/single/01.webp'}
+                          />
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
               </div>
 
 
